@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Man's Landing - Play Free Online Strategy Game | nomanslanding.online</title>
+    <meta name="description" content="Play No Man's Landing online for free! A thrilling strategy survival game where you build, defend, and conquer in an unforgiving wasteland. Start your adventure now!">
+    <meta name="keywords" content="nomanslanding, no mans landing, online game, strategy game, survival game, free game, browser game">
+    <meta name="author" content="No Man's Landing Game">
+    <meta property="og:title" content="No Man's Landing - Free Online Strategy Game">
+    <meta property="og:description" content="Build, defend, and survive in the ultimate wasteland strategy game. Play No Man's Landing free in your browser!">
+    <meta property="og:url" content="https://nomanslanding.online">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://nomanslanding.online/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="No Man's Landing - Free Online Strategy Game">
+    <meta name="twitter:description" content="Build, defend, and survive in the ultimate wasteland strategy game. Play No Man's Landing free in your browser!">
+    <link rel="canonical" href="https://nomanslanding.online">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'apple-blue': '#007AFF',
+                        'apple-gray': '#8E8E93',
+                        'apple-light-gray': '#F2F2F7',
+                        'apple-dark': '#1C1C1E',
+                        'apple-green': '#34C759',
+                        'apple-orange': '#FF9500',
+                        'apple-red': '#FF3B30'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .game-iframe {
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .game-iframe:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(-45deg, #007AFF, #5856D6, #AF52DE, #FF2D92);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #007AFF, #5856D6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007AFF;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .game-container {
+            position: relative;
+            background: linear-gradient(135deg, rgba(0,122,255,0.1) 0%, rgba(88,86,214,0.1) 100%);
+            border: 2px solid rgba(0,122,255,0.2);
+        }
+        
+        .feature-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-icon:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-apple-light-gray text-apple-dark font-sans leading-relaxed">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-16 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="float-animation absolute top-10 left-10 text-6xl">🏜️</div>
+            <div class="float-animation absolute top-20 right-20 text-4xl" style="animation-delay: 2s;">⚔️</div>
+            <div class="float-animation absolute bottom-20 left-1/4 text-5xl" style="animation-delay: 4s;">🏗️</div>
+            <div class="float-animation absolute bottom-10 right-1/3 text-4xl" style="animation-delay: 1s;">🌟</div>
+        </div>
+        <div class="max-w-6xl mx-auto text-center relative z-10 fade-in-up">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-gradient">No Man's Landing</h1>
+            <p class="text-xl md:text-3xl text-white max-w-4xl mx-auto mb-8 opacity-90">
+                Survive, build, and conquer in the ultimate wasteland strategy adventure
+            </p>
+            <div class="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 pulse-animation">
+                <span class="text-lg">🎮</span>
+                <span class="text-white font-semibold">Free to Play • No Download</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <!-- Game Container -->
+        <section class="mb-12 fade-in-up">
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 card-hover">
+                <h2 class="text-2xl md:text-3xl font-bold text-apple-dark mb-6 text-center">
+                    🎮 <span class="text-gradient">Play Now</span> - No Download Required
+                </h2>
+                <div class="game-container rounded-2xl p-4 mb-4">
+                    <div class="relative w-full" style="padding-bottom: 56.25%;">
+                        <div id="game-loading" class="absolute inset-0 flex items-center justify-center bg-gray-100 rounded-xl">
+                            <div class="text-center">
+                                <div class="loading-spinner mx-auto mb-4"></div>
+                                <p class="text-apple-gray">Loading Game...</p>
+                                <p class="text-sm text-apple-gray mt-2">If the game doesn't load, please check your internet connection</p>
+                            </div>
+                        </div>
+                        <iframe 
+                            id="game-iframe"
+                            src="https://cloud.onlinegames.io/games/2025/unity/nomanslanding/index-og.html"
+                            class="absolute top-0 left-0 w-full h-full game-iframe border-0 opacity-0 transition-opacity duration-500"
+                            allowfullscreen
+                            loading="lazy"
+                            title="No Man's Landing Game"
+                            onload="this.style.opacity=1; document.getElementById('game-loading').style.display='none';"
+                            onerror="document.getElementById('game-loading').innerHTML='<div class=\'text-center\'><p class=\'text-red-500 font-semibold mb-2\'>⚠️ Game Temporarily Unavailable</p><p class=\'text-apple-gray text-sm\'>We\'re working to restore the game. Please try again later or contact support.</p></div>'">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center space-x-4 text-sm text-apple-gray">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span>Online</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                        <span>HD Graphics</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+                        <span>Multiplayer</span>
+                    </div>
+                </div>
+                <p class="text-apple-gray text-center mt-4 text-sm md:text-base">
+                    🚀 Click to start your survival journey. Game loads directly in your browser!
+                </p>
+            </div>
+        </section>
+
+        <!-- Game Description -->
+        <section class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 card-hover fade-in-up" style="animation-delay: 0.2s;">
+                <div class="flex items-center mb-4">
+                    <div class="text-4xl mr-4 float-animation">🏜️</div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-apple-dark">
+                        About <span class="text-gradient">No Man's Landing</span>
+                    </h2>
+                </div>
+                <p class="text-apple-gray mb-4 leading-relaxed">
+                    Welcome to No Man's Landing, an immersive online strategy game set in a post-apocalyptic wasteland. 
+                    As a survivor in this harsh environment, you must gather resources, build fortifications, and defend 
+                    your territory against hostile forces.
+                </p>
+                <p class="text-apple-gray leading-relaxed mb-4">
+                    Every decision matters as you navigate through challenging terrain, forge alliances with other players, 
+                    and establish your dominance in this unforgiving world. Will you become the ultimate wasteland commander?
+                </p>
+                <div class="inline-block bg-gradient-to-r from-apple-blue to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold pulse-animation">
+                    🎯 Strategic Survival
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 card-hover fade-in-up" style="animation-delay: 0.4s;">
+                <div class="flex items-center mb-4">
+                    <div class="text-4xl mr-4 float-animation" style="animation-delay: 1s;">⚡</div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-apple-dark">
+                        Key <span class="text-gradient">Features</span>
+                    </h2>
+                </div>
+                <ul class="space-y-4 text-apple-gray">
+                    <li class="flex items-center transition-all duration-300 hover:text-apple-blue">
+                        <span class="text-apple-green mr-3 text-xl">✓</span>
+                        <span class="font-medium">Real-time strategy gameplay</span>
+                    </li>
+                    <li class="flex items-center transition-all duration-300 hover:text-apple-blue">
+                        <span class="text-apple-green mr-3 text-xl">✓</span>
+                        <span class="font-medium">Resource management system</span>
+                    </li>
+                    <li class="flex items-center transition-all duration-300 hover:text-apple-blue">
+                        <span class="text-apple-green mr-3 text-xl">✓</span>
+                        <span class="font-medium">Base building & fortification</span>
+                    </li>
+                    <li class="flex items-center transition-all duration-300 hover:text-apple-blue">
+                        <span class="text-apple-green mr-3 text-xl">✓</span>
+                        <span class="font-medium">Multiplayer competition</span>
+                    </li>
+                    <li class="flex items-center transition-all duration-300 hover:text-apple-blue">
+                        <span class="text-apple-green mr-3 text-xl">✓</span>
+                        <span class="font-medium">Free to play in browser</span>
+                    </li>
+                </ul>
+                <div class="mt-6 grid grid-cols-3 gap-3 text-center text-xs">
+                    <div class="bg-apple-light-gray rounded-lg p-2">
+                        <div class="text-lg">🎮</div>
+                        <div class="text-apple-gray">No Install</div>
+                    </div>
+                    <div class="bg-apple-light-gray rounded-lg p-2">
+                        <div class="text-lg">🌐</div>
+                        <div class="text-apple-gray">Cross Platform</div>
+                    </div>
+                    <div class="bg-apple-light-gray rounded-lg p-2">
+                        <div class="text-lg">💯</div>
+                        <div class="text-apple-gray">100% Free</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Details -->
+        <section class="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-12 card-hover fade-in-up" style="animation-delay: 0.6s;">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-apple-dark mb-4">
+                    🎯 Game <span class="text-gradient">Overview</span>
+                </h2>
+                <p class="text-apple-gray max-w-2xl mx-auto">
+                    Master three core pillars of survival in this challenging wasteland environment
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 card-hover">
+                    <div class="bg-apple-blue text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl feature-icon">
+                        🏗️
+                    </div>
+                    <h3 class="text-xl font-bold text-apple-dark mb-3">Build & Expand</h3>
+                    <p class="text-apple-gray text-sm leading-relaxed">
+                        Construct your base from scratch, upgrade facilities, and expand your territory 
+                        to secure valuable resources across the wasteland.
+                    </p>
+                    <div class="mt-4 inline-block bg-apple-blue/10 text-apple-blue px-3 py-1 rounded-full text-xs font-semibold">
+                        Base Construction
+                    </div>
+                </div>
+                <div class="text-center p-6 rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 card-hover" style="animation-delay: 0.2s;">
+                    <div class="bg-apple-orange text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl feature-icon" style="animation-delay: 0.5s;">
+                        ⚔️
+                    </div>
+                    <h3 class="text-xl font-bold text-apple-dark mb-3">Strategic Combat</h3>
+                    <p class="text-apple-gray text-sm leading-relaxed">
+                        Plan tactical attacks, defend against raiders, and engage in epic battles 
+                        with other players to claim dominance over the land.
+                    </p>
+                    <div class="mt-4 inline-block bg-apple-orange/10 text-apple-orange px-3 py-1 rounded-full text-xs font-semibold">
+                        PvP Battles
+                    </div>
+                </div>
+                <div class="text-center p-6 rounded-xl bg-gradient-to-br from-green-50 to-green-100 card-hover" style="animation-delay: 0.4s;">
+                    <div class="bg-apple-green text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl feature-icon" style="animation-delay: 1s;">
+                        🌟
+                    </div>
+                    <h3 class="text-xl font-bold text-apple-dark mb-3">Survive & Thrive</h3>
+                    <p class="text-apple-gray text-sm leading-relaxed">
+                        Manage resources wisely, adapt to changing conditions, and make crucial 
+                        decisions that will determine your survival in this harsh environment.
+                    </p>
+                    <div class="mt-4 inline-block bg-apple-green/10 text-apple-green px-3 py-1 rounded-full text-xs font-semibold">
+                        Resource Management
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <div class="inline-flex items-center space-x-4 bg-gradient-to-r from-apple-blue/10 to-purple-600/10 rounded-full px-6 py-3">
+                    <span class="text-2xl">🏆</span>
+                    <span class="font-semibold text-apple-dark">Become the Ultimate Wasteland Commander</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Play -->
+        <section class="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-apple-dark mb-6">
+                📚 How to Play No Man's Landing
+            </h2>
+            <div class="space-y-4">
+                <div class="flex items-start space-x-4">
+                    <div class="bg-apple-blue text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                        1
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-apple-dark mb-1">Start Your Settlement</h3>
+                        <p class="text-apple-gray text-sm">
+                            Begin with basic structures and gradually expand your base by collecting resources and upgrading buildings.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="bg-apple-blue text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                        2
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-apple-dark mb-1">Gather Resources</h3>
+                        <p class="text-apple-gray text-sm">
+                            Explore the wasteland to find essential materials like scrap metal, fuel, and rare components needed for advancement.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="bg-apple-blue text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                        3
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-apple-dark mb-1">Defend Your Territory</h3>
+                        <p class="text-apple-gray text-sm">
+                            Build defensive structures and recruit units to protect your settlement from hostile players and environmental threats.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="bg-apple-blue text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                        4
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-apple-dark mb-1">Dominate the Wasteland</h3>
+                        <p class="text-apple-gray text-sm">
+                            Expand your influence, form strategic alliances, and compete with other survivors to become the ultimate wasteland ruler.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Requirements -->
+        <section class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-apple-dark mb-6">
+                💻 System Requirements
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold text-apple-dark mb-3">Minimum Requirements</h3>
+                    <ul class="space-y-2 text-apple-gray text-sm">
+                        <li>• Modern web browser (Chrome, Firefox, Safari, Edge)</li>
+                        <li>• Stable internet connection</li>
+                        <li>• 2GB RAM minimum</li>
+                        <li>• Hardware acceleration enabled</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-apple-dark mb-3">Platform Support</h3>
+                    <ul class="space-y-2 text-apple-gray text-sm">
+                        <li>• Windows, Mac, Linux desktops</li>
+                        <li>• iOS and Android mobile devices</li>
+                        <li>• Tablets and iPads</li>
+                        <li>• No download or installation required</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-6 p-4 bg-apple-light-gray rounded-lg">
+                <p class="text-apple-gray text-sm text-center">
+                    <strong class="text-apple-dark">Pro Tip:</strong> For the best gaming experience, 
+                    play on a desktop or laptop with a reliable internet connection. 
+                    The game is fully optimized for both PC and mobile devices.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-apple-dark text-white py-8 px-4 mt-12">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-xl font-semibold mb-4">Ready to Conquer the Wasteland?</h2>
+            <p class="text-gray-400 mb-6">
+                Join thousands of players in No Man's Landing. Start your survival journey today!
+            </p>
+            <div class="text-sm text-gray-400">
+                <p>&copy; 2025 nomanslanding.online - Free Online Strategy Game</p>
+                <p class="mt-2">Play responsibly. Game content suitable for ages 13+</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Game",
+        "name": "No Man's Landing",
+        "url": "https://nomanslanding.online",
+        "description": "A thrilling strategy survival game where you build, defend, and conquer in an unforgiving wasteland.",
+        "genre": "Strategy",
+        "gamePlatform": "Web Browser",
+        "operatingSystem": "Cross Platform",
+        "applicationCategory": "Game",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.5",
+            "ratingCount": "1000"
+        }
+    }
+    </script>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Add parallax effect to floating elements
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const floatingElements = document.querySelectorAll('.float-animation');
+                floatingElements.forEach((element, index) => {
+                    const speed = 0.1 + (index * 0.05);
+                    element.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+
+            // Add typing effect to main title
+            const title = document.querySelector('h1');
+            if (title) {
+                const text = title.textContent;
+                title.textContent = '';
+                let i = 0;
+                const typeEffect = setInterval(() => {
+                    if (i < text.length) {
+                        title.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typeEffect);
+                    }
+                }, 100);
+            }
+
+            // Add counter animation
+            const startCounter = (element, target) => {
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    element.textContent = Math.floor(current);
+                    if (current >= target) {
+                        element.textContent = target;
+                        clearInterval(timer);
+                    }
+                }, 20);
+            };
+
+            // Interactive hover effects for feature cards
+            const featureCards = document.querySelectorAll('.card-hover');
+            featureCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+
+        // Game loading simulation
+        function simulateGameLoading() {
+            const loadingElement = document.getElementById('game-loading');
+            const iframe = document.getElementById('game-iframe');
+            
+            setTimeout(() => {
+                if (loadingElement && loadingElement.style.display !== 'none') {
+                    loadingElement.innerHTML = `
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">🎮</div>
+                            <p class="text-apple-gray font-semibold">Almost ready...</p>
+                            <div class="w-full bg-gray-200 rounded-full h-2 mt-4">
+                                <div class="bg-apple-blue h-2 rounded-full" style="width: 85%; transition: width 2s;"></div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }, 2000);
+        }
+
+        // Call loading simulation
+        simulateGameLoading();
+    </script>
+</body>
+</html>
